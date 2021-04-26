@@ -18,7 +18,6 @@ jobs:
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
           script: |
-            ls /home/ubuntu/dev
             cd /home/ubuntu/dev/twoweeks
             chmod +x deploy.sh
             ./deploy.sh
