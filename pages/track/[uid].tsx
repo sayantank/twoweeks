@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
     const { db } = await connectToDatabase();
     const user = await db
       .collection("users")
-      .findOne({ _id: ObjectId(uid) }, { projection: { _id: 1, name: 1 } });
+      .findOne({ _id: new ObjectId(uid) }, { projection: { _id: 1, name: 1 } });
 
     if (!user) {
       return {
@@ -53,7 +53,10 @@ export async function getServerSideProps(context) {
     user._id = user._id.toString();
     const recordDocs = await db
       .collection("records")
-      .find({ user_id: ObjectId(uid) }, { projection: { _id: 0, user_id: 0 } })
+      .find(
+        { user_id: new ObjectId(uid) },
+        { projection: { _id: 0, user_id: 0 } }
+      )
       .sort({ createdAt: -1 })
       .toArray();
 

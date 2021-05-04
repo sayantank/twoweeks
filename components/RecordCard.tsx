@@ -1,8 +1,14 @@
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { Trash2 } from "react-feather";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
+
+interface DeleteVariables {
+  data: {
+    id: string;
+  };
+}
 
 const months = [
   "Jan",
@@ -26,7 +32,7 @@ const formatDate = (date) => {
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutues = "0" + minutes;
+    minutes = "0" + minutes;
   }
   return `${hours}:${minutes}, ${date.getDay()} ${
     months[date.getMonth()]
@@ -44,8 +50,9 @@ const RecordCard = ({
 }) => {
   const [dateTime, _] = React.useState(new Date(createdAt));
   const queryClient = useQueryClient();
-  const mutation = useMutation(() =>
-    axios.delete("/api/record/delete", { data: { id: _id.toString() } })
+
+  const mutation = useMutation((body: DeleteVariables) =>
+    axios.delete<DeleteVariables>("/api/record/delete", body)
   );
 
   return (
@@ -65,7 +72,7 @@ const RecordCard = ({
                     queryClient.invalidateQueries("records");
                     toast.success("Record deleted successfully.");
                   },
-                  onError: (e) => {
+                  onError: (e: AxiosError) => {
                     toast.error(e.response.data.message);
                   },
                 }

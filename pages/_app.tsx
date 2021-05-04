@@ -1,3 +1,4 @@
+import type { AppProps } from "next/app";
 import { Provider } from "next-auth/client";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
@@ -9,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const queryClient = new QueryClient();
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider
       options={{

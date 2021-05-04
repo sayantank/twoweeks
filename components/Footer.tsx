@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { GitHub, Twitter, Coffee } from "react-feather";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className="w-full h-48 lg:h-72 flex flex-col justify-end items-center py-4 space-y-4">
       <div className="flex space-x-4">

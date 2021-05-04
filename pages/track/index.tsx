@@ -9,7 +9,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import Layout from "../../components/Layout";
 import RecordCard from "../../components/RecordCard";
 import Unauthorized from "../../components/Unauthorized";
-import RecordForm from "../../components/RecordForm";
+import RecordForm from "../../components/RecordForm.jsx";
 
 export default function Track() {
   const [copied, setCopied] = React.useState(false);
@@ -26,6 +26,10 @@ export default function Track() {
   if (!session) {
     return <Unauthorized />;
   }
+
+  // React.useEffect(() => {
+  //   console.log(session);
+  // }, []);
 
   return (
     <Layout>

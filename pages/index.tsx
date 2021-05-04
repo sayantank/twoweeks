@@ -43,7 +43,7 @@ export default function Home() {
           <h2 className="text-lg text-gray-800 font-semibold">
             Other resources
           </h2>
-          <ul>
+          <ul className="flex flex-col space-y-4">
             <li className="flex flex-col space-y-2">
               <h3 className="text-gray-800 font-medium hover:underline underline lg:no-underline">
                 <a
@@ -57,6 +57,22 @@ export default function Home() {
               <p className="text-sm">
                 Find the latest help and resources that has been verified by the
                 Twitter community as per your location and requirements.
+              </p>
+            </li>
+            <li className="flex flex-col space-y-2">
+              <h3 className="text-gray-800 font-medium hover:underline underline lg:no-underline">
+                <a
+                  href="https://getmyvaccine.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GetMyVaccine
+                </a>
+              </h3>
+              <p className="text-sm">
+                Register using your State/District or pincode and they'll reach
+                out to you via email when there is a vaccine center with a free
+                slot available in your area.
               </p>
             </li>
           </ul>
